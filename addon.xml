@@ -10,7 +10,7 @@
     <res width="1920" height="1080" aspect="16:9" default="true" folder="1080i" />
   </extension>
   <extension point="xbmc.addon.metadata">
-    <description lang="en">FORKED FROM skin.amber</description>
+    <description lang="en">FORKED FROM skin.amber, 99.9% of the credit goes to Jester Pecinko.  I basically just screwed up his color scheme and renamed it.</description>
     <platform>all</platform>
     <license>GNU GENERAL PUBLIC LICENSE. Version 3, June 2007</license>
     <source>https://github.com/b-pass/skin.amber</source>

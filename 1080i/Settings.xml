@@ -24,14 +24,14 @@
         <font>InfoTitle</font>
         <textcolor>Highlight</textcolor>
       </control>
-      <control type="label" description="Amber">
+      <control type="label" description="Ocean">
         <visible>![Container(9000).HasFocus(1)]</visible>
         <posx>650</posx>
         <posy>117</posy>
         <width>620</width>
         <height>72</height>
         <align>center</align>
-        <label>$LOCALIZE[5] - AMBER</label>
+        <label>$LOCALIZE[5] - Ocean</label>
         <font>InfoTitle</font>
         <textcolor>Highlight</textcolor>
       </control>
