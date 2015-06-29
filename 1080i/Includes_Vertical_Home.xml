@@ -732,13 +732,13 @@
 	      </control>
 	  </control>-->
       <control type="group" description="Furniture">
-        <control type="image" description="Main Left Blade">
+        <!--control type="image" description="Main Left Blade">
           <posx>0</posx>
           <posy>0</posy>
           <width>540</width>
           <height>1080</height>
           <texture border="0,0,30,0">common/ViewMenuHome.png</texture>
-        </control>
+        </control-->
         <control type="label">
           <visible>Skin.HasSetting(plexbmc)</visible>
           <posx>50</posx>
@@ -764,46 +764,53 @@
           <font>Volume</font>
         </control>
       </control>
-      <control type="fixedlist" id="300" description="Main Bar">
-        <animation effect="fade" time="200" start="100" end="20" reversible="true" condition="!Control.HasFocus(300)">Conditional</animation>
-        <posx>30</posx>
+      <control type="list" id="300" description="Main Bar">
+        <!--animation effect="fade" time="200" start="100" end="20" reversible="true" condition="!Control.HasFocus(300)">Conditional</animation-->
+        <posx>350</posx>
         <posy>100</posy>
         <width>460</width>
         <height>880</height>
         <onup>300</onup>
         <ondown>300</ondown>
         <onleft>9001</onleft>
-        <onright>700</onright>
+        <onright>9001</onright>
         <onback>9001</onback>
         <pagecontrol>-</pagecontrol>
         <focusposition>5</focusposition>
         <movement>0</movement>
 				<!--<defaultcontrol always="true">1</defaultcontrol>-->
         <preloaditems>4</preloaditems>
-        <itemlayout height="80" width="460">
+        <itemlayout height="100" width="460">
           <control type="label">
-            <posx>0</posx>
+            <posx>20</posx>
             <posy>0</posy>
-            <width>460</width>
-            <height>80</height>
-            <align>right</align>
+            <width>450</width>
+            <height>100</height>
+            <align>left</align>
             <aligny>center</aligny>
             <textcolor>Grey3</textcolor>
-            <shadowcolor>ShadowDark</shadowcolor>
+            <shadowcolor>Shadow</shadowcolor>
             <label>$INFO[ListItem.Label]</label>
 			<scroll>false</scroll>
             <font>MainMenuVertical</font>
           </control>
         </itemlayout>
-        <focusedlayout height="80" width="460">
-          <control type="label">
+        <focusedlayout height="100" width="460">
+		  <control type="image" description="Main Left Blade">
             <posx>0</posx>
             <posy>0</posy>
             <width>460</width>
-            <height>80</height>
-            <align>right</align>
+            <height>100</height>
+            <texture>common/HomeItemFO.png</texture>
+          </control>
+          <control type="label">
+            <posx>20</posx>
+            <posy>0</posy>
+            <width>450</width>
+            <height>100</height>
+            <align>left</align>
             <aligny>center</aligny>
-            <textcolor>Highlight</textcolor>
+            <textcolor>White2</textcolor>
             <shadowcolor>ShadowDark</shadowcolor>
             <label>$INFO[ListItem.Label]</label>
             <font>MainMenuVerticalFO</font>
@@ -814,7 +821,7 @@
         </content>
       </control>
     </control>
-    <control type="image" description="Sub Left Blade">
+    <!--control type="image" description="Sub Left Blade">
       <include>VisibleFadeEffect</include>
       <animation effect="slide" start="0,0" end="389,0" time="250" delay="0" reversible="true" condition="Control.HasFocus(9001)">conditional</animation>
 	  <animation effect="slide" start="0,0" end="477,0" time="250" delay="0" reversible="true" condition="Skin.HasSetting(plexbmc) + Control.HasFocus(311) + !IsEmpty(Container(311).ListItem.Property(Plot))">conditional</animation>
@@ -824,13 +831,14 @@
       <width>540</width>
       <height>1080</height>
       <texture border="0,0,30,0">common/ViewMenu.png</texture>
-    </control>
-    <control type="fixedlist" id="9001">
-      <visible allowhiddenfocus="true">Control.HasFocus(9001)</visible>
+    </control-->
+    <control type="list" id="9001">
+      <!--visible allowhiddenfocus="true">Control.HasFocus(9001)</visible>
       <include>VisibleFadeEffect</include>
       <animation effect="slide" start="0,0" end="450,0" time="250" delay="0" condition="Control.HasFocus(9001)">conditional</animation>
-      <animation effect="fade" time="300" start="100" end="0" delay="0" reversible="true" condition="!Control.HasFocus(9001)">Conditional</animation>
-      <posx>-450</posx>
+      <animation effect="fade" time="300" start="100" end="0" delay="0" reversible="true" condition="!Control.HasFocus(9001)">Conditional</animation-->
+	  <animation effect="fade" time="100" start="100" end="50" reversible="true" condition="!Control.HasFocus(9001)">Conditional</animation>
+      <posx>850</posx>
       <posy>330</posy>
       <width>400</width>
       <height>480</height>
@@ -847,13 +855,14 @@
           <posy>0</posy>
           <width>400</width>
           <height>60</height>
-          <texture border="3">buttons/ButtonNF.png</texture>
         </control>
         <control type="label" description="Main Label">
-          <posx>30</posx>
+          <posx>20</posx>
           <posy>0</posy>
           <width>360</width>
           <height>60</height>
+		  <textcolor>Grey2</textcolor>
+		  <shadowcolor>ShadowDark</shadowcolor>
           <label>$INFO[ListItem.Label]</label>
         </control>
       </itemlayout>
@@ -863,14 +872,15 @@
           <posy>0</posy>
           <width>400</width>
           <height>60</height>
-          <texture border="2">buttons/ButtonFO.png</texture>
+          <texture border="2">common/HomeItemFO.png</texture>
         </control>
         <control type="label" description="Main Label">
-          <posx>30</posx>
+          <posx>20</posx>
           <posy>0</posy>
           <width>360</width>
           <height>60</height>
-          <textcolor>Highlight</textcolor>
+		  <textcolor>White2</textcolor>
+		  <shadowcolor>ShadowDark</shadowcolor>
           <label>$INFO[ListItem.Label]</label>
         </control>
       </focusedlayout>

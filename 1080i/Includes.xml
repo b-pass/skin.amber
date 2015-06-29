@@ -774,6 +774,18 @@
   </include>
   <include name="Home.Main.Menu.Items">
     <include condition="Skin.HasSetting(plexbmc)">Plexbmc.Items</include>
+    <item id="300" description="PVR">
+      <visible>PVR.HasTVChannels</visible>
+      <label>$LOCALIZE[31500]</label>
+      <thumb fallback="special://skin/backgrounds/Pvr.jpg">$INFO[Skin.String(Pvr.Background)]</thumb>
+      <onclick>ActivateWindow(TVRecordings)</onclick>
+    </item>
+    <!--item id="301" description="PVR">
+      <visible>PVR.HasRadioChannels</visible>
+      <label>$LOCALIZE[31509]</label>
+      <thumb fallback="special://skin/backgrounds/Pvr.jpg">$INFO[Skin.String(Pvr.Background)]</thumb>
+      <onclick>ActivateWindow(RadioChannels)</onclick>
+    </item-->
     <item id="21" description="Custom1">
       <visible>!IsEmpty(Skin.String(CustomHome.1.Path))</visible>
       <label>$INFO[Skin.String(CustomHome.1.Label)]</label>
@@ -844,7 +856,7 @@
       <thumb fallback="special://skin/backgrounds/default/default.jpg">$INFO[Skin.String(CustomHome.6.Background)]</thumb>
       <onclick>$INFO[Skin.String(CustomHome.6.Path)]</onclick>
     </item>
-    <item id="6" description="Music">
+    <!--item id="6" description="Music">
       <visible>!Skin.HasSetting(plexbmc)</visible>
       <visible>!Skin.HasSetting(Music.Hide)</visible>
       <label>$LOCALIZE[2]</label>
@@ -852,6 +864,12 @@
       <onclick condition="Library.HasContent(Music) + !Skin.HasSetting(ArtistView)">ActivateWindow(MusicLibrary,root)</onclick>
       <onclick condition="!Library.HasContent(Music)">ActivateWindow(MusicFiles,root)</onclick>
       <onclick condition="Library.HasContent(Music) + Skin.HasSetting(ArtistView)">ActivateWindow(MusicLibrary,Artists)</onclick>
+    </item-->
+    <item id="6" description="Music">
+      <label>$LOCALIZE[2]</label>
+      <thumb fallback="special://skin/backgrounds/Music.jpg">$INFO[Skin.String(Music.Background)]</thumb>
+	  <onclick condition="System.HasAddon(script.audio.pandora)">RunAddon(script.audio.pandora)</onclick>
+	  <onclick condition="!System.HasAddon(script.audio.pandora)">ActivateWindow(MusicLibrary,root</onclick>
     </item>
     <item id="27" description="Custom.7">
       <visible>!IsEmpty(Skin.String(CustomHome.7.Path))</visible>
@@ -879,18 +897,6 @@
       <label>$INFO[Skin.String(CustomHome.8.Label)]</label>
       <thumb fallback="special://skin/backgrounds/default/default.jpg">$INFO[Skin.String(CustomHome.8.Background)]</thumb>
       <onclick>$INFO[Skin.String(CustomHome.8.Path)]</onclick>
-    </item>
-    <item id="300" description="PVR">
-      <visible>PVR.HasTVChannels</visible>
-      <label>$LOCALIZE[31500]</label>
-      <thumb fallback="special://skin/backgrounds/Pvr.jpg">$INFO[Skin.String(Pvr.Background)]</thumb>
-      <onclick>ActivateWindow(TVChannels)</onclick>
-    </item>
-    <item id="301" description="PVR">
-      <visible>PVR.HasRadioChannels</visible>
-      <label>$LOCALIZE[31509]</label>
-      <thumb fallback="special://skin/backgrounds/Pvr.jpg">$INFO[Skin.String(Pvr.Background)]</thumb>
-      <onclick>ActivateWindow(RadioChannels)</onclick>
     </item>
     <item id="7" description="Favorites">
       <visible>!Skin.HasSetting(Favourites.Hide)</visible>
@@ -931,18 +937,6 @@
     </item>
   </include>
   <include name="Home.Submenu.Items">
-    <item id="0" description="Update Library">
-      <visible>!Skin.HasSetting(Hide.LibraryUpdate.Button)</visible>
-      <visible>Container(300).HasFocus(3) | Container(300).HasFocus(4) | Container(300).HasFocus(5) | Container(300).HasFocus(13) | Container(300).HasFocus(14)</visible>
-      <label>$LOCALIZE[653]</label>
-      <onclick>UpdateLibrary(video)</onclick>
-    </item>
-    <item id="0" description="Update Library">
-      <visible>!Skin.HasSetting(Hide.LibraryUpdate.Button)</visible>
-      <visible>Container(300).HasFocus(6)</visible>
-      <label>$LOCALIZE[653]</label>
-      <onclick>UpdateLibrary(music)</onclick>
-    </item>
     <item id="1" description="DVD eject">
       <visible>Container(300).HasFocus(8)</visible>
       <label>$LOCALIZE[13391]</label>
@@ -960,7 +954,12 @@
       <onclick>ActivateWindow(VideoLibrary,Addons,return)</onclick>
     </item>
     <item id="4" description="Music apps">
-      <visible>Container(300).HasFocus(2) + !Skin.HasSetting(Addons5)</visible>
+      <visible>Container(300).HasFocus(6) + System.HasAddon(script.audio.pandora)</visible>
+      <label>Pandora Internet Radio</label>
+      <onclick>ActivateWindow(MusicLibrary,Addons,return)</onclick>
+    </item>
+    <item id="4444" description="Music apps">
+      <visible>Container(300).HasFocus(6)</visible>
       <label>$LOCALIZE[2]</label>
       <onclick condition="Library.HasContent(Music)">ActivateWindow(MusicLibrary,Addons,return)</onclick>
       <onclick condition="!Library.HasContent(Music)">ActivateWindow(MusicFiles,Addons,return)</onclick>
@@ -1140,30 +1139,47 @@
       <label>$LOCALIZE[20183]</label>
       <onclick>XBMC.ReloadSkin()</onclick>
     </item>
-    <item id="100" description="Tv Channels">
+    <item id="105" description="Recordings">
+      <visible>Container(300).HasFocus(300)</visible>
+      <label>Default Recordings</label>
+      <onclick>ActivateWindow(1101)</onclick>
+    </item>
+    <item id="103" description="Recordings">
+      <visible>Container(300).HasFocus(300)</visible>
+      <label>All Recordings</label>
+      <onclick>ActivateWindow(TVRecordings, root)</onclick>
+    </item>
+    <!--item id="100" description="Tv Channels">
       <visible>Container(300).HasFocus(300)</visible>
       <label>19019</label>
       <onclick>ActivateWindow(TVChannels)</onclick>
-    </item>
+    </item-->
     <item id="101" description="Radio Channels">
-      <visible>Container(300).HasFocus(300)</visible>
+      <visible>Container(300).HasFocus(300) & PVR.HasRadioChannels</visible>
       <label>19024</label>
       <onclick>ActivateWindow(RadioChannels)</onclick>
     </item>
     <item id="102" description="EPG Timeline">
       <visible>Container(300).HasFocus(300)</visible>
-      <label>$LOCALIZE[22020]</label>
+      <label>Live TV</label>
       <onclick>ActivateWindow(TVGuide)</onclick>
-    </item>
-    <item id="103" description="Recordings">
-      <visible>Container(300).HasFocus(300)</visible>
-      <label>19163</label>
-      <onclick>ActivateWindow(TVRecordings)</onclick>
     </item>
     <item id="104" description="Timer">
       <visible>Container(300).HasFocus(300)</visible>
-      <label>19040</label>
+      <label>TV Recording Schedule</label>
       <onclick>ActivateWindow(TVTimers)</onclick>
+    </item>
+	<item id="0" description="Update Library">
+      <visible>!Skin.HasSetting(Hide.LibraryUpdate.Button)</visible>
+      <visible>Container(300).HasFocus(3) | Container(300).HasFocus(4) | Container(300).HasFocus(5) | Container(300).HasFocus(13) | Container(300).HasFocus(14)</visible>
+      <label>$LOCALIZE[653]</label>
+      <onclick>UpdateLibrary(video)</onclick>
+    </item>
+    <item id="0" description="Update Library">
+      <visible>!Skin.HasSetting(Hide.LibraryUpdate.Button)</visible>
+      <visible>Container(300).HasFocus(6)</visible>
+      <label>$LOCALIZE[653]</label>
+      <onclick>UpdateLibrary(music)</onclick>
     </item>
     <include condition="System.HasAddon(plugin.video.plexbmc)">Plexbmc.Submenu.Items</include>
   </include>
